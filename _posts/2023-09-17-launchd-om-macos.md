@@ -3,7 +3,7 @@ title: Verwenden von launchd zur Ausführung von Skripten in macOS
 description: >
   Obwohl es nach wie vor in macOS enthalten ist und auch noch unterstützt wird, ist crond keine von Apple empfohlene Lösung mehr.
 image: 
-  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/2023-09-17-launchd-on-macos.jpg
+  path: https://i.ibb.co/LpKx24H/ae5ebe8f5cce.jpg
 sitemap: true
 categories: [Apple]
 tag: [macOS]
