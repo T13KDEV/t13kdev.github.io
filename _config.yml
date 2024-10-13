@@ -26,10 +26,10 @@ description: >- # used by seo meta and the atom feed
 url: "https://t13kdev.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: thomaskrampe # change to your GitHub username
 
 twitter:
-  username: twitter_username # change to your Twitter username
+  username: thomaskrampe # change to your Twitter username
 
 social:
   # Change to your full name.
