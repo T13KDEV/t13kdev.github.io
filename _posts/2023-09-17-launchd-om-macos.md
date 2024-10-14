@@ -21,7 +21,7 @@ Cron-Jobs funktionieren nach wie vor wie wir es auch von allen anderen UX System
 Um Agenten oder Daemons über launchd auszuführen, sollten wir zuerst die entsprechende Skripte erstellen, die dann über **launchd** regelmäßig ausgeführt werden sollen. Hier ändert sich im Vergleich zu **crond** nichts. Die gebräuchlichste Skriptsprache auf macOS ist bash, es geht aber natürlich auch mit Python, Perl oder natürlich auch Powershell (wird übrigens am besten über [HomeBrew][1] installiert).
 
 Wenn in einem Skript andere System Kommandos verwendet werden sollen, unbedingt darauf achten, dass die Pfade zu den Binaries mit angegeben werden. Aus einem `diskutil list` muss dann im Skript ein `/usr/sbin/diskutil list` werden. Unter **System Settings** -> **Privacy & Security** -> **Full Disk Access** kann es auch nicht Schaden, entsprechende Berechtigungen für die Tools zu vergeben, die z.B. auf die Disks zugreifen sollen.
-{:.note title="Tip am Rande"}
+{: .prompt-tip }
 
 Unsere Skripte können wie bei **crond** überall im Filesystem liegen (`chmod +x` nicht vergessen), ich würde sie aber an einem Ort sammeln z.B. unter `/usr/local/scripts`. Die Job Beschreibungen **_müssen_** aber an zwei verschiedenen Orten gespeichert werden, je nachdem, ob sie als Agenten oder Daemons ausgeführt werden sollen:
 
@@ -31,7 +31,7 @@ Unsere Skripte können wie bei **crond** überall im Filesystem liegen (`chmod +
 Immer daran denken, dass Agenten keine Root-Rechte haben und daher keine Aufgaben ausführen können, die einen tiefen Systemzugriff erfordern. Daemons hingegen laufen mit Root-Rechten und können Aufgaben ausführen, die das gesamte System betreffen.
 
 Ein schlecht geschriebenes und angreifbares Skript als Daemon kann als Einfallstor für weitere böse Jungs dienen.
-{:.note title="Achtung"}
+{: .prompt-warning }
 
 ## Job Definitionen
 
