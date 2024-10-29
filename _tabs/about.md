@@ -34,7 +34,8 @@ Technology Evangelist, Virtualisierung & Cloud Architekt, Autor, Speaker, Blogge
 <!--projects-->
 ## Support
 
-<a href="https://www.buymeacoffee.com/thomaskrampe" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+![BMAC](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)
 
 [CTP]: https://www.citrix.com/community/ctp/awardees.html
 [VIPP]: https://www.parallels.com/partners/vipp/#members
+[BMAC]: https://www.buymeacoffee.com/thomaskrampe
