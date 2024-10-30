@@ -18,7 +18,7 @@ Es gibt hosting Anbieter bei denen man SSH-Keys direkt bei der Einrichtung eines
 
 SSH Keys generieren:
 
-```none
+```bash
 ssh-keygen -t rsa -b 4096 -f azure-ssh
 ```
 
@@ -30,7 +30,7 @@ Durch den oben stehenden Befehl, haben wir ein Schlüsselpaar generiert. Dabei i
 
 Als nächstes melden wir uns mit dem `root` User auf dem Server an, um einen eigenen User für weitere Zugriffe einzurichten. Bei einer frischen Ubuntu installation wird in der Regel bereits ein solcher Benutzer erstellt. Falls nicht, können wir auch einen weiteren erstellen.
 
-```none
+```bash
 adduser thomas
 usermod -aG sudo thomas
 su - thomas
@@ -40,7 +40,7 @@ Danach müssen wir noch den zuvor erstellten **Public Key** mit dem Benutzer ver
 
 In das Home Verzeichnis des Benutzer und folgendes ausführen:
 
-```none
+```bash
 mkdir ~/.ssh
 echo '<Inhalt von azure-ssh.pub>' > ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
@@ -48,7 +48,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 Die Anmeldung per **Private Key** sollte jetzt bereits funktionieren
 
-```none
+```bash
 ssh thomas@<HOSTNAME oder IP> -i ~/.ssh/azure-ssh
 ```
 
@@ -56,7 +56,7 @@ ssh thomas@<HOSTNAME oder IP> -i ~/.ssh/azure-ssh
 
 Wir passen ebenfalls einige Grundeinstellungen in der OpenSSH Konfigurationsdatei an, auch hier machen wir aber vorher wieder ein Backup der Datei.
 
-```none
+```bash
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 sudo nano /etc/ssh/sshd_config
 ```
@@ -86,7 +86,7 @@ In dem File setzen wir jetzt folgende Parameter bzw. fügen sie ggf. auch neu hi
 
 Bevor wir nun mit dem absichern fortfahren, bringen wir das System ersteinmal auf den neusten Stand.
 
-```none
+```bash
 sudo apt update && sudo apt upgrade
 ```
 
@@ -100,14 +100,14 @@ sudo apt install fail2ban
 
 Nach der Installation sichern wir erst einmal die default config Datei, falls wir irgend etwas falsch machen sollten, können wir jederzeit auf die Datei zurückgreifen.
 
-```none
+```bash
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.bak
 sudo nano /etc/fail2ban/jail.conf
 ```
 
 In der Datei finden wir die auskommentierte Zeile # \[sshd\]. Darunter setzen wir dann folgende Einträge.
 
-```none
+```bash
 # [sshd]
 enabled = true
 bantime = 4w
@@ -122,12 +122,12 @@ Damit aktivieren wir das monitoring für den SSH-Server, setzen die Banzeit auf 
 
 2 Faktor wird mit dem Google Authenticator ermöglicht. Dafür brauchen wir das [Google Authenticator PAM Module](https://github.com/google/google-authenticator-libpam)
 
-```none
+```bash
 sudo apt install libpam-google-authenticator
 google-authenticator
 ```
 
-```none
+```bash
 Do you want authentication tokens to be time-based (y/n) y
 
 Warning: pasting the following URL into your browser exposes the OTP secret to Google:
@@ -141,7 +141,7 @@ Enter code from app (-1 to skip):
 
 Der QR Code muss mit der 2 Faktor App gescannt bzw. der Secret Key kopiert (KeepassX, Bitwarden) werden. Anschließend erhalten wir noch Backupcodes, welche wir aufbewahren sollten.
 
-```none
+```bash
 Code confirmed
 Your emergency scratch codes are:
   21323478
@@ -175,14 +175,14 @@ Do you want to enable rate-limiting? (y/n) y
 
 Als nächstes müssen wir das PAM Modul für den SSH-Daemon anpassen um 2FA nutzen zu können. Dafür machen wir als erstes wieder ein Backup der Datei und bearbeiten die Datei.
 
-```none
+```bash
 sudo cp /etc/pam.d/sshd /etc/pam.d/sshd.bak
 sudo nano /etc/pam.d/sshd
 ```
 
 Wir setzen ein `#` vor die Zeile `@include common-auth` um sie auszukommentieren. Außerdem fügen wir 2 weitere Zeilen am ende hinzu.
 
-```none
+```bash
 #@include common-auth
 
 ...
@@ -193,7 +193,7 @@ auth required pam_permit.so
 
 Zu guter letzt, starten wir den SSh Daemon neu.
 
-```none
+```bash
 sudo service ssh restart
 ```
 
