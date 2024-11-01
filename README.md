@@ -1,4 +1,5 @@
 
+[![Build and Deploy](https://github.com/T13KDEV/t13kdev.github.io/actions/workflows/pages-deploy.yml/badge.svg)](https://github.com/T13KDEV/t13kdev.github.io/actions/workflows/pages-deploy.yml)
 [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
 [![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
 
