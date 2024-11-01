@@ -4,10 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-<<<<<<< HEAD
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
-=======
 ![Thomas Krampe](https://i.ibb.co/D7DvQz0/Thomas-Krampe-0-5.png)
 
 ## Mission
@@ -29,4 +25,4 @@ Technology Evangelist, Virtualisierung & Cloud Architekt, Autor, Speaker, Blogge
 [CTP]: https://www.citrix.com/community/ctp/awardees.html
 [VIPP]: https://www.parallels.com/partners/vipp/#members
 
->>>>>>> cbafe37109f9061b376fea4965259187d0ab3bcf
+
